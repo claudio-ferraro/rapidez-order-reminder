@@ -55,6 +55,13 @@ export default {
                     } else {
                         Notify(window.config.translations.order_reminder.add, 'success')
                     }
+
+                    if ('dataLayer' in window) {
+                        window.dataLayer.push({
+                            event: 'order_reminder',
+                            reminder: this.variables,
+                        })
+                    }
                 }).catch(response => {
                     this.toggleForm()
                     if (response?.response?.status === 403) {
