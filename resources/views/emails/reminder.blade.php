@@ -7,6 +7,6 @@
 
 @lang('Click the button below to quickly and easily order these products.')
 
-<x-rapidez::button class="add-to-cart" href="{{ config('app.url') }}/cart/?skus={{ $orderReminder->products->implode('sku', ',') }}">@lang('Add to cart')</x-rapidez::button>
+<x-rapidez::button class="add-to-cart" href="{{ route('cart') }}/?skus={{ $orderReminder->products->implode('sku', ',') }}">@lang('Add to cart')</x-rapidez::button>
 <x-rapidez::button class="unsubscribe" href="{{ $unsubscribeUrl }}">@lang('Unsubscribe from order reminders')</x-rapidez::button>
 @endcomponent
