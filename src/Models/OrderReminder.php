@@ -17,7 +17,8 @@ class OrderReminder extends Model
     protected $appends = ['reminder_date'];
 
     protected $casts = [
-        'renewal_date' => 'datetime'
+        'renewal_date' => 'datetime',
+        'timespan' => 'integer',
     ];
 
     protected static function booted(): void
