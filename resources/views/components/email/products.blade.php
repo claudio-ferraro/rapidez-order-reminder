@@ -11,15 +11,20 @@
         @foreach($products as $product)
             <tr>
                 <td>
-                    <a href="{{ config('app.url').$product->url }}">
+                    <a href="{{ url($product->url) }}">
                         <img
-                            src="{{ config('app.url').'/storage/' . config('rapidez.store') . '/resizes/80x80/magento/catalog/product'.$product->thumbnail.'.webp' }}"
+                            src="{{ route('resized-image'. [
+                                'store' => config('rapidez.store'),
+                                'size' => '80',
+                                'placeholder' => 'magento',
+                                'file' => 'catalog/product'.$product->thumbnail
+                            ]) }}"
                             alt="{{ $product->name }}"
                         >
                     </a>
                 </td>
                 <td>
-                    <a href="{{ config('app.url').$product->url }}">
+                    <a href="{{ url($product->url) }}">
                         {{ $product->name }}
                     </a>
                 </td>

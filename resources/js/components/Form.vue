@@ -23,7 +23,7 @@ export default {
             return {
                 show: false,
                 variables: {
-                    email: localStorage.getItem('email') || '',
+                    email: this.$root.guestEmail,
                     timespan: 1,
                     products: []
                 }
@@ -59,9 +59,14 @@ export default {
                     if ('dataLayer' in window) {
                         window.dataLayer.push({
                             event: 'order_reminder',
-                            reminder: this.variables,
+                            reminder: this.variables
                         })
                     }
+                    this.$el.dispatchEvent(
+                        new CustomEvent('submitOrderReminder', {
+                            bubbles: true
+                        })
+                    )
                 }).catch(response => {
                     this.toggleForm()
                     if (response?.response?.status === 403) {
@@ -81,6 +86,11 @@ export default {
                         this.toggleForm()
                         Notify(window.config.translations.order_reminder.delete, 'success')
                         window.app.$emit('refreshOrderReminders')
+                        this.$el.dispatchEvent(
+                            new CustomEvent('deleteOrderReminder', {
+                                bubbles: true
+                            })
+                        )
                     })
                 }
             }
