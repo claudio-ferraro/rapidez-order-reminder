@@ -18,8 +18,7 @@ return new class extends Migration
 
         Schema::create('order_reminder_product', function (Blueprint $table) {
             $table->foreignId('order_reminder_id')->constrained('order_reminders')->cascadeOnDelete();
-            $table->unsignedInteger('product_entity_id');
-            $table->foreign('product_entity_id')->references('entity_id')->on('catalog_product_entity')->onDelete('cascade');
+            $table->string('product_sku')->references('sku')->on('catalog_product_entity')->onDelete('cascade');
         });
     }
 
