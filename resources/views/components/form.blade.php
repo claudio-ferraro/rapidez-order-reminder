@@ -94,7 +94,8 @@
         <button
             class="flex items-center font-medium text-inactive cursor-pointer group gap-x-2"
             aria-label="{{ __('Order reminder') }}"
-            v-on:click="if (!$root.loading) { toggleForm() }"
+            v-on:click="toggleForm()"
+            ::disabled="$root.loading"
         >
             @if($edit)
                 <x-heroicon-o-ellipsis-horizontal class="absolute top-6 right-6" />
