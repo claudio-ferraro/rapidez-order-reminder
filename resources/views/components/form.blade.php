@@ -72,9 +72,9 @@
                                         <x-rapidez::button.primary
                                             type="submit"
                                             class="flex group ml-4 md:ml-7"
-                                            ::disabled="window.app.$data.loading"
+                                            ::disabled="$root.loading"
                                         >
-                                            <span v-if="!window.app.$data.loading" class="flex items-center gap-x-2.5">
+                                            <span v-if="!$root.loading" class="flex items-center gap-x-2.5">
                                                 <x-heroicon-o-bell class="h-3.5 w-3.5 group-hover:animate-wiggle origin-[50%_25%]" />
                                                 @lang('Save reminder')
                                             </span>
@@ -91,10 +91,10 @@
                 </div>
             </div>
         </div>
-        <div
+        <button
             class="flex items-center font-medium text-inactive cursor-pointer group gap-x-2"
             aria-label="{{ __('Order reminder') }}"
-            v-on:click="if (!window.app.$data.loading) { toggleForm() }"
+            v-on:click="if (!$root.loading) { toggleForm() }"
         >
             @if($edit)
                 <x-heroicon-o-ellipsis-horizontal class="absolute top-6 right-6" />
@@ -102,6 +102,6 @@
                 <x-heroicon-o-bell class="w-4 h-4 group-hover:animate-wiggle origin-[50%_25%]" />
                 <span class="text-15">@lang('Order reminder')</span>
             @endif
-        </div>
+        </button>
     </div>
 </order-reminder-form>
