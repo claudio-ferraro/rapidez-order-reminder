@@ -101,7 +101,7 @@
             class="flex items-center font-medium text-muted cursor-pointer group gap-x-2"
             aria-label="{{ __('Order reminder') }}"
             v-on:click="toggleForm()"
-            ::disabled="$root.loading"
+            v-bind:disabled="$root.loading"
         >
             @if($edit)
                 <x-heroicon-o-ellipsis-horizontal class="absolute top-6 right-6" />
